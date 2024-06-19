@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from app.schemas import LinkID
+from app.models import User
 from app.crud import link_external_id
 from app.auth import get_current_user
 
