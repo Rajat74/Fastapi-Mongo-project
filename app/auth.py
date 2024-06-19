@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from app.models import User
 from app.crud import get_user_by_email
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"

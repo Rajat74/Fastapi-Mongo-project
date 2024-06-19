@@ -17,12 +17,15 @@ def create_user(user: User):
     return str(result.inserted_id)
 
 def get_user_by_email(email: str):
-    return db.users.find_one({"email": email})
+    user = db.users.find_one({"email": email})
+    if user:
+        user["_id"] = str(user["_id"])  
+    return user
 
 def authenticate_user(email: str, password: str):
     user = get_user_by_email(email)
     if user and verify_password(password, user["password"]):
-        return User(**user)
+        return user  
     return None
 
 def link_external_id(user_id: str, external_id: str):
